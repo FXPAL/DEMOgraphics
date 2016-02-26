@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,26 +10,102 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="horizontal"
+    android:keepScreenOn="true"
     tools:context="com.fxpal.demographics.ClassifyPictureActivity">
 
-    <ImageView
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageview"
+        android:layout_weight="1"
+        android:padding="20dp"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageview"
-        android:layout_weight="1"/>
+        android:orientation="vertical"
+        android:weightSum="7"
+        android:layout_weight="1">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/snapshotIV"
+            android:layout_weight="2"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/gender_TV"
+            android:textSize="100sp"
+            android:textAlignment="center"
+            android:text="none"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/age_TV"
+            android:textSize="100sp"
+            android:textAlignment="center"
+            android:text="none"
+            android:layout_weight="2"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/plot"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                ap:label="Affect"
+                ap:labelTextColor="#000000"
+                ap:rangeLabel="valence"
+                ap:domainLabel="arousal"
+                ap:rangeLabelTextColor="#000000"
+                ap:domainLabelTextColor="#000000"
+                ap:borderColor="#00000000"
+                ap:backgroundColor="#00FFFFFF"
+                ap:graphBackgroundColor="#00FFFFFF"
+                ap:gridBackgroundColor="#00111111"
+                ap:gridPaddingLeft="20dp"
+                ap:gridPaddingRight="20dp"
+                ap:gridPaddingTop="20dp"
+                ap:gridPaddingBottom="20dp"
+                ap:labelTextSize="20sp"
+                ap:rangeLabelTextSize="13sp"
+                ap:domainLabelTextSize="13sp"
+                ap:graphDomainLineColor="#000000"
+                ap:graphDomainLineThickness="1dp"
+                ap:graphRangeLineColor="#000000"
+                ap:graphRangeLineThickness="1dp"
+                ap:rangeTickLabelTextSize="15sp"
+                ap:rangeOriginTickLabelTextSize="15sp"
+                ap:domainTickLabelTextSize="15sp"
+                ap:domainOriginTickLabelTextSize="15sp"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/results_box"
         android:text="empty"
-        android:layout_weight="4"/>
-
+        android:background="@android:color/darker_gray"
+        android:visibility="gone"
+        android:layout_weight="1"/>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fab"
         android:src="@drawable/ic_portrait_24dp"
+        android:visibility="gone"
         android:onClick="selectImage"/>
+
 
 </LinearLayout>
